@@ -33,67 +33,86 @@
         android:columnCount="3"
         android:rowCount="3">
 
-        <edu.csi5230.ngoretski.homework4.TttButton
+        <Button
             android:id="@+id/button0"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text=""
             android:textSize="36sp" />
 
-        <edu.csi5230.ngoretski.homework4.TttButton
+        <Button
             android:id="@+id/button1"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:text=""
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:textSize="36sp" />
 
-        <edu.csi5230.ngoretski.homework4.TttButton
+        <Button
             android:id="@+id/button2"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:text=""
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:textSize="36sp" />
 
 
-        <edu.csi5230.ngoretski.homework4.TttButton
+        <Button
             android:id="@+id/button3"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:text=""
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:textSize="36sp" />
 
-        <edu.csi5230.ngoretski.homework4.TttButton
+        <Button
             android:id="@+id/button4"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:text=""
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:textSize="36sp" />
 
-        <edu.csi5230.ngoretski.homework4.TttButton
+        <Button
             android:id="@+id/button5"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:text=""
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:textSize="36sp" />
 
-        <edu.csi5230.ngoretski.homework4.TttButton
+        <Button
             android:id="@+id/button6"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:text=""
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:textSize="36sp" />
 
-        <edu.csi5230.ngoretski.homework4.TttButton
+        <Button
             android:id="@+id/button7"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:text=""
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:textSize="36sp" />
 
-        <edu.csi5230.ngoretski.homework4.TttButton
+        <Button
             android:id="@+id/button8"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:text=""
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:textSize="36sp" />
     </GridLayout>
 
@@ -103,6 +122,12 @@
         android:layout_weight="1"
         android:background="@android:color/darker_gray"
         android:layout_margin="5dp">
+
+        <Button
+            android:id="@+id/startbutton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text=""/>
 
     </RelativeLayout>
 

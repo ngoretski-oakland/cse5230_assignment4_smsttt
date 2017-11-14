@@ -21,12 +21,9 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     private EditText phoneNumber;
-    private EditText userName;
     private Button callButton;
 
     private BroadcastReceiver br;
-
-    private boolean waitingForResponse = false;
 
     private SmsManager smsManager;
 
@@ -36,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         phoneNumber = (EditText) findViewById(R.id.editText);
-        userName = (EditText) findViewById(R.id.editText2);
         callButton = (Button) findViewById(R.id.button);
 
         ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.SEND_SMS, Manifest.permission.READ_PHONE_STATE, Manifest.permission.READ_SMS, Manifest.permission.RECEIVE_SMS},1);
@@ -49,8 +45,6 @@ public class MainActivity extends AppCompatActivity {
                 String number = phoneNumber.getText().toString();
 
                 smsManager.sendTextMessage(number, null, MessageHandler.getInviteMessage(), null, null);
-
-                waitingForResponse = true;
             }
         });
 

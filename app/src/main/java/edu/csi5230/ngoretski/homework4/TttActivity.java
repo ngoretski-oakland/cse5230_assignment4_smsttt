@@ -1,26 +1,23 @@
 package edu.csi5230.ngoretski.homework4;
 
-import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.Bundle;
 import android.provider.Telephony;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.telephony.SmsMessage;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class TttActivity extends AppCompatActivity {
 
-    List<TttButton> buttons = new ArrayList<TttButton>(9);
+    List<Button> buttons = new ArrayList<Button>(9);
     TttTextView label = null;
 
     String enemyNumber;
@@ -43,18 +40,20 @@ public class TttActivity extends AppCompatActivity {
 
         label = (TttTextView) findViewById(R.id.textView1);
 
-        buttons.add((TttButton) findViewById(R.id.button0));
-        buttons.add((TttButton) findViewById(R.id.button1));
-        buttons.add((TttButton) findViewById(R.id.button2));
-        buttons.add((TttButton) findViewById(R.id.button3));
-        buttons.add((TttButton) findViewById(R.id.button4));
-        buttons.add((TttButton) findViewById(R.id.button5));
-        buttons.add((TttButton) findViewById(R.id.button6));
-        buttons.add((TttButton) findViewById(R.id.button7));
-        buttons.add((TttButton) findViewById(R.id.button8));
+        setTurnLabel();
+
+        buttons.add((Button) findViewById(R.id.button0));
+        buttons.add((Button) findViewById(R.id.button1));
+        buttons.add((Button) findViewById(R.id.button2));
+        buttons.add((Button) findViewById(R.id.button3));
+        buttons.add((Button) findViewById(R.id.button4));
+        buttons.add((Button) findViewById(R.id.button5));
+        buttons.add((Button) findViewById(R.id.button6));
+        buttons.add((Button) findViewById(R.id.button7));
+        buttons.add((Button) findViewById(R.id.button8));
 
         for (int i = 0; i < 9 ; i++) {
-            final TttButton button = buttons.get(i);
+            final Button button = buttons.get(i);
 
             buttons.get(i).setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -74,6 +73,14 @@ public class TttActivity extends AppCompatActivity {
 
                     smsManager.sendTextMessage(enemyNumber, null, MessageHandler.getMessageMove(buttons.indexOf(button), symbol), null, null);
                     button.setText(symbol);
+
+                    boolean win = checkForWin(symbol);
+
+                    if (win) {
+                        label.setText("YOU WON!");
+                        myTurn = false;
+                        return;
+                    }
 
                     myTurn = false;
                     setTurnLabel();
@@ -99,9 +106,14 @@ public class TttActivity extends AppCompatActivity {
                             int pos = MessageHandler.getPosition(text);
 
                             if (buttons.get(pos).getText() == null || "".equals(buttons.get(pos).getText().toString())) {
-                                buttons.get(pos).setText(symbol);
+                                buttons.get(pos).setText(tmpSymbol);
 
-                                boolean win = checkForWin(symbol);
+                                boolean win = checkForWin(tmpSymbol);
+
+                                if (win) {
+                                    label.setText(enemyNumber + " WON!");
+                                    return;
+                                }
 
                                 myTurn = true;
                                 setTurnLabel();
